@@ -7,12 +7,13 @@ const pegarIdAnimal = (id) => data.employees
 const pegarAntigo = (acc, animal) => {
   if (acc.age > animal.age) return acc;
   return animal;
-}
+};
 
 function getOldestFromFirstSpecies(id) {
   // seu código aqui
   const IdAnimal = pegarIdAnimal(id);
-  const objeto = data.species.find((element) => element.id === IdAnimal).residents.reduce(pegarAntigo);
+  const objeto = data.species.find((element) => element.id === IdAnimal).residents
+    .reduce(pegarAntigo);
   return Object.keys(objeto).map((element) => objeto[element]);
 }
 
