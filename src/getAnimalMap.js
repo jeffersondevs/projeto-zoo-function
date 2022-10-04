@@ -10,24 +10,24 @@ function filterSex(sex, animal, residents) {
 }
 
 function switchOptions(animal, options = []) {
-  const info = {};
+  const informacao = {};
   if (options.includeNames) {
-    info[animal.name] = animalNames(animal.residents);
+    informacao[animal.name] = animalNames(animal.residents);
   } else {
     return animal.name;
   }
   if (options.sex && options.includeNames) {
-    info[animal.name] = filterSex(options.sex, animal, info[animal.name]);
+    informacao[animal.name] = filterSex(options.sex, animal, informacao[animal.name]);
   }
   if (options.sorted) {
-    info[animal.name].sort();
+    informacao[animal.name].sort();
   }
-  return info;
+  return informacao;
 }
 
 function getAnimalMap(options) {
   // seu código aqui
-  const loc = {
+  const localizacao = {
     NE: [],
     NW: [],
     SE: [],
@@ -35,12 +35,12 @@ function getAnimalMap(options) {
   };
   data.species.forEach((animal) => {
     if (options) {
-      loc[animal.location].push(switchOptions(animal, options));
+      localizacao[animal.location].push(switchOptions(animal, options));
       return;
     }
-    loc[animal.location].push(animal.name);
+    localizacao[animal.location].push(animal.name);
   });
-  return loc;
+  return localizacao;
 }
 
 
