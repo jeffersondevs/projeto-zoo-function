@@ -1,10 +1,9 @@
-const { hours } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 const { species } = data;
 
 function diaDisponivel(nomeAnimal) {
-  return species.find((animal) => animal.name === nomeAnimal).availability; 
+  return species.find((animal) => animal.name === nomeAnimal).availability;
 }
 
 function horarioDisponivel() {
@@ -15,10 +14,11 @@ function horarioDisponivel() {
     }
     acc[dia] = {
       officeHour: `Open from ${data.hours[dia].open}am until ${data.hours[dia].close}pm`,
-      exhibition: species.filter((animal) => animal.availability.includes(dia)).map((animal) => animal.name)
-    }
+      exhibition: species.filter((animal) => animal.availability
+        .includes(dia)).map((animal) => animal.name),
+    };
     return acc;
-  }, { Monday: { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' } })
+  }, { Monday: { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' } });
 }
 
 function getSchedule(scheduleTarget) {
@@ -28,7 +28,7 @@ function getSchedule(scheduleTarget) {
   }
   if (data.hours[scheduleTarget]) {
     const dias = horarioDisponivel();
-    return { [scheduleTarget]: dias[scheduleTarget] }
+    return { [scheduleTarget]: dias[scheduleTarget] };
   }
   return horarioDisponivel();
 }
