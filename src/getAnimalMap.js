@@ -43,5 +43,4 @@ function getAnimalMap(options) {
   return localizacao;
 }
 
-
 module.exports = getAnimalMap;
